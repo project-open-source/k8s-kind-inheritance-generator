@@ -7,13 +7,6 @@ plugins {
 
 
 repositories {
-    maven {
-        url getenv("BUSSINESS_PLATFORM_REPOSITORY")
-        credentials {
-            username = getenv("BUSSINESS_PLATFORM_REPOSITORY_USERNAME")
-            password = getenv("BUSSINESS_PLATFORM_REPOSITORY_PASSWORD")
-        }
-    }
     mavenCentral()
 }
 
