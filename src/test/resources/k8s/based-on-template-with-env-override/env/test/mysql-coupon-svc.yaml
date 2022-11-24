@@ -1,0 +1,3 @@
+subsets:
+  - addresses:
+      - ip: 192.168.test.ip

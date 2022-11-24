@@ -1,0 +1,3 @@
+subsets:
+  - addresses:
+      - ip: 1.1.1.1

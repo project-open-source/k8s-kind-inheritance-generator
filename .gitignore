@@ -1,0 +1,14 @@
+.DS_Store
+
+.gradle
+build
+lib
+# git-crypt
+.git-crypt.key
+
+# IDE
+.vscode/
+.idea/
+
+tmp/
+k8s/*-cm.yaml

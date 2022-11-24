@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: mysql-coupon-svc
+subsets:
+  - addresses:
+      - ip: 192.168.test.id
+    ports:
+      - name: tcp
+        port: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-coupon-svc
+spec:
+  clusterIP: None
+  ports:
+    - name: tcp
+      port: 3306
