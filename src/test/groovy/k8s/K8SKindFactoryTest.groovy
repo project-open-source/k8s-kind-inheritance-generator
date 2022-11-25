@@ -9,8 +9,8 @@ import spock.lang.Specification
 class K8SKindFactoryTest extends Specification {
     def "should override yaml config by key"() {
         setup:
-        K8sKind k8sKind = K8sKindFactory.create(new File("./src/test/resources/mysql-coupon-svc.yaml"), "test", "projectName")
-        K8sKind k8sKindOverride = K8sKindFactory.create(new File("./src/test/resources/mysql-coupon-svc-override.yaml"), "test", "projectName")
+        K8sKind k8sKind = K8sKindFactory.create(new File("./src/test/resources/mysql-business-svc.yaml"), "test", "projectName")
+        K8sKind k8sKindOverride = K8sKindFactory.create(new File("./src/test/resources/mysql-business-svc-override.yaml"), "test", "projectName")
 
         when:
         K8sKind k8sKindMerged = k8sKind.mergeBy(k8sKindOverride)
@@ -20,7 +20,7 @@ class K8SKindFactoryTest extends Specification {
         yaml == """apiVersion: v1
 kind: Endpoints
 metadata:
-  name: mysql-coupon-svc
+  name: mysql-business-svc
 subsets:
 - addresses:
   - ip: 1.1.1.1
@@ -32,7 +32,7 @@ subsets:
 
     def "should return error when yaml file contains multiple yaml script"() {
         when:
-        K8sKindFactory.create(new File("./src/test/resources/mysql-coupon-svc-mutiple-k8s-kind.yaml"), "test", "projectName")
+        K8sKindFactory.create(new File("./src/test/resources/mysql-business-svc-mutiple-k8s-kind.yaml"), "test", "projectName")
 
         then:
         thrown(MultipleYamlScriptException)
@@ -49,8 +49,8 @@ kind: Secret
 type: Opaque
 metadata:
   labels:
-    app: ftms-business-platform-coupon
-  name: ftms-business-platform-coupon-secret
+    app: business-service-app
+  name: business-service-app-secret
 stringData:
   spring.datasource.username: username
   spring.datasource.password: password

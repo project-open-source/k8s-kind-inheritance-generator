@@ -1,5 +1,4 @@
 plugins {
-    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'groovy'
 }
 
@@ -10,20 +9,15 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:3.0.13'
-    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-config'
     implementation 'com.google.guava:guava:31.1-jre'
     implementation 'com.alibaba:fastjson:2.0.19'
+    implementation 'org.yaml:snakeyaml:1.33'
     implementation 'org.apache.commons:commons-collections4:4.4'
-    implementation 'org.spockframework:spock-core:2.3-groovy-3.0'
-    implementation 'junit:junit:4.13.2'
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR9"
-    }
-}

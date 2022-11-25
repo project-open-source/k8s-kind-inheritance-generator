@@ -59,7 +59,7 @@ class K8sScriptGeneratorTest extends Specification {
         prodYaml == """apiVersion: v1
 kind: Endpoints
 metadata:
-  name: mysql-coupon-svc
+  name: mysql-business-svc
 subsets:
 - addresses:
   - ip: 192.168.prod.ip
@@ -80,8 +80,8 @@ kind: Secret
 type: Opaque
 metadata:
   labels:
-    app: ftms-business-platform-coupon
-  name: ftms-business-platform-coupon-secret
+    app: business-service-app
+  name: business-service-app-secret
 stringData:
   spring.datasource.username: prod-username
   spring.datasource.password: password
