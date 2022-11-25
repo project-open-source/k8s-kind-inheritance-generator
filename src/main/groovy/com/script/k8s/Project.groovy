@@ -13,9 +13,6 @@ class Project {
         this.relativePath = relativePath
     }
 
-    Project() {
-    }
-
     Project createBY(String relativePath) {
         def project = new File(relativePath)
         return new Project(project.getName(), project.getPath())
