@@ -1,9 +1,5 @@
 package com.script.k8s
 
-import com.alibaba.fastjson2.JSON
-import com.alibaba.fastjson2.JSONObject
-import org.yaml.snakeyaml.composer.ComposerException
-
 class Project {
     final String name;
     final String relativePath

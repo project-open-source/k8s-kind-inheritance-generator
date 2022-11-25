@@ -1,6 +1,5 @@
 package com.script
 
-import com.google.common.collect.Lists
 import com.script.k8s.K8sKindFactory
 import com.script.k8s.K8sKinds
 import com.script.k8s.Project
