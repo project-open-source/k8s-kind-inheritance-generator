@@ -17,12 +17,12 @@ class K8sScriptGenerator {
     }
 
 
-    static List<File> generateEnvFiles(String projectPath, String projectName) {
+    static List<File> generateEnvFiles(Project project, String generatedDir) {
         def generatedFiles = []
-        def templateK8sKinds = K8sKindTemplateLoader.load(projectPath, projectName)
-        def envK8sKinds = K8sKindEnvironmentLoader.load(projectPath, projectName)
+        def templateK8sKinds = K8sKindTemplateLoader.load(project)
+        def envK8sKinds = K8sKindEnvironmentLoader.load(project)
         templateK8sKinds.compose(envK8sKinds).each {
-            def generatedFile = new File("./generated/" + it.env + "/" + it.projectName + "/" + it.fileName)
+            def generatedFile = new File(generatedDir + "/"+ it.env + "/" + it.projectName + "/" + it.fileName)
             getFileUtils().createNewFile(generatedFile, true)
             String fileYamlContent = toYaml(it)
             generatedFile.write(fileYamlContent)

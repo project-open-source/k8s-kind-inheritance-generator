@@ -3,19 +3,17 @@ package com.script
 import com.google.common.collect.Lists
 import com.script.k8s.K8sKindFactory
 import com.script.k8s.K8sKinds
+import com.script.k8s.Project
 import groovy.io.FileType
 
 class K8sKindEnvironmentLoader {
 
-    private static final List<String> ENV = Lists.newArrayList("prod","prod-idc","prod-verify", "test")
-
-
-    static K8sKinds load(String dir, String projectName) {
+    static K8sKinds load(Project project) {
         def mergedK8sKinds = []
-        new File(dir).traverse(type: FileType.FILES, nameFilter: ~/.*\.yaml$/) {
+        new File(project.relativePath).traverse(type: FileType.FILES, nameFilter: ~/.*\.yaml$/) {
             def parentFileName = it.getParentFile().getName()
-            if (ENV.contains(parentFileName)) {
-                def k8sKind = K8sKindFactory.create(it, parentFileName, projectName)
+            if (parentFileName != project.name) {
+                def k8sKind = K8sKindFactory.create(it, parentFileName, project.name)
                 mergedK8sKinds.add(k8sKind)
             }
         }

@@ -18,6 +18,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 }
 
+mainClassName = 'com.script.K8sMain'
+
 tasks.named('test') {
     useJUnitPlatform()
 }
