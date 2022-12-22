@@ -60,7 +60,7 @@ $ gradle build distZip
 
 - **在线下载**
 
-可以直接在https://github.com/tw-open/k8s-kind-inheritance-generator/releases下载
+可以直接在https://github.com/project-open-source/k8s-kind-inheritance-generator/releases 下载
 
 ## c. Usage
 ```shell
